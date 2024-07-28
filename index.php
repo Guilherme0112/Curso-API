@@ -30,5 +30,4 @@
 
     include_once "classes/db-classes.php";
     include_once "api/usuarios/usuarios.php";
-    // var_dump($url);
     ?>
