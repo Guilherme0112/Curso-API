@@ -27,7 +27,15 @@
     }
 
     $method = $_SERVER['REQUEST_METHOD'];
-
+    $GLOBALS['secretJWT'] = '123456';
+    
+    // CLasses
     include_once "classes/db-classes.php";
+    include_once "classes/jwt-classes.php";
+    include_once "classes/login-classes.php";
+    
+    // Api's
+    include_once "api/login/login.php";
     include_once "api/usuarios/usuarios.php";
-    ?>
+    
+?>
