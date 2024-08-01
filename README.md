@@ -1,7 +1,8 @@
-#Documentaçao da API RESTful, CRUD
+# Documentaçao da API RESTful, CRUD
 
 - Baixe o o repositório ou digite:
-`git clone https:://github.com/Guilherme0112/Curso-API.git`
+<br>
+`git clone https://github.com/Guilherme0112/Curso-API.git`
 
 - No arquivo "classes/db-classes.php" você pode conectar seu banco de dados MySQL, lembre-se de trocar os nomes das tabelas nas query's que ficam na pasta "classes".
 
@@ -21,4 +22,4 @@ Editar usuários (PUT):
 
 Deletar usuários (DELETE):
 <br>
-´localhost/api/usuarios/delete/{id}´
+`localhost/api/usuarios/delete/{id}`
