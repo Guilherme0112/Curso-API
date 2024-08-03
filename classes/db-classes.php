@@ -4,7 +4,7 @@
             $dbhost = 'localhost';
             $dbuser = 'root';
             $dbpass = '';
-            $dbname = 'cursoapi';
+            $dbname = 'curso-api';
 
             return new PDO("mysql: host=$dbhost;
                             dbname=$dbname;",

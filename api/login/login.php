@@ -11,7 +11,5 @@
         } else {
             echo json_encode(["Erro" => "Você deve colocar as credenciais"]);
         }
-    } else {
-        echo json_encode(["Erro" => "Método Inválido"]);
     }
 ?>

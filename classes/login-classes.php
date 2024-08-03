@@ -16,7 +16,7 @@
                     $token = JWT::encode([
                         'id' => $id,
                         'nick' => $name,
-                        'exprire' => $expire_in
+                        'expire' => $expire_in
                     ], $GLOBALS['secretJWT']);
 
                     $upd = $db->query("UPDATE login SET token = '$token' WHERE idlogin = $id");
@@ -35,7 +35,34 @@
             }
         }
         public static function verificar(){
+            $headers = apache_request_headers();
+            if(isset($headers['Authorization'])){
+                $token = $headers['Authorization'];
+            } else {
+                echo json_encode(["Erro" => "Você não está logado"]);
+                exit;
+            }
 
+            $db = DB::connect();
+            $query = $db->prepare("SELECT * FROM login WHERE token = '$token'");
+            $exe = $query->execute();
+            $obj = $query->fetchObject();
+
+            if($query->rowCount() > 0){
+                $idDB = $obj->idlogin;
+                $tokenDB = $obj->token;
+
+                $decodeJWT = JWT::decode($tokenDB, $GLOBALS['secretJWT']);
+                if($decodeJWT->expire < time()){
+                    $upd = $db->query("UPDATE login SET token = '' WHERE idlogin = $idDB");
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                echo json_encode(["Erro" => "Você não tem autorização"]);
+                exit;
+            }
         }
     }
 
